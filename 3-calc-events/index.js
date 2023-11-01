@@ -23,9 +23,9 @@ const calculationEmitter = new EventEmitter()
 
 calculationEmitter.on(operation, (result) => console.log(result))
 
-const calc = (currentOperation, firstNumber, secondNumber) => {
+const calculate = (currentOperation, firstNumber, secondNumber) => {
      calculationEmitter.emit(currentOperation, ( operations[currentOperation](firstNumber, secondNumber)) )
 }
 
-calc(operation, firstInteger, secondInteger)
+calculate(operation, firstInteger, secondInteger)
 
