@@ -1,3 +1,5 @@
+const { EventEmitter } = require('events');
+
 const arguments = process.argv.slice(2)
 const currentLength = arguments.length
 
@@ -17,6 +19,13 @@ const operations = {
     divide: require('./operations/divide'),
 }
 
-const result = operations[operation](firstInteger, secondInteger)
+const calculationEmitter = new EventEmitter()
 
-console.log(result)
+calculationEmitter.on(operation, (result) => console.log(result))
+
+const calc = (currentOperation, firstNumber, secondNumber) => {
+     calculationEmitter.emit(currentOperation, ( operations[currentOperation](firstNumber, secondNumber)) )
+}
+
+calc(operation, firstInteger, secondInteger)
+
