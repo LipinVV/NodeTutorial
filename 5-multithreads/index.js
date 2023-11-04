@@ -48,9 +48,9 @@ const calculateWithThreads = (entries) => {
     })
 }
 
-const basicCalculations = (array) => {
+const basicCalculations = (entries) => {
     performance.mark('basic execution started')
-    calculate(array)
+    calculate({ entries })
     performance.mark('basic execution ended')
     performance.measure(' basic', 'basic execution started', 'basic execution ended')
 }
@@ -58,6 +58,7 @@ const basicCalculations = (array) => {
 const main = async () => {
     const limit = 300000
     const entries = Array.from({ length: limit }, (_, index) => index + 1)
+
     basicCalculations(entries)
     await calculateWithThreads(entries)
 }
