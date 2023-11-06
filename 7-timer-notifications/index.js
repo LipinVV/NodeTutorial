@@ -1,5 +1,8 @@
 const arguments = process.argv.slice(2)
 
+const notifier = require('node-notifier')
+const path = require("path")
+
 const convertedArguments = arguments.map(argument => +argument.replace(/[^0-9]+/g, ""))
 const currentLength = convertedArguments.length
 
@@ -33,7 +36,13 @@ if(convertedArguments.length > 0) {
     secondsToHMS(calculatedTimeGap)
 
     setTimeout(() => {
-        console.log('Таймер сработал')
+        notifier.notify({
+            title: 'Время пришло!',
+            message: 'Пора писать код!',
+            icon: path.join(__dirname, 'owl.webp'),
+            sound: true,
+        })
+        // имеются возможности для добавления реакций на разные события
     }, calculatedTimeGap)
 }
 
