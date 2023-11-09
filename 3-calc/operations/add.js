@@ -1,3 +1,3 @@
-module.exports = function add(firstInteger, secondInteger) {
-    return firstInteger + secondInteger
+module.exports = function add(firstValue, secondValue) {
+    return Number(firstValue) + Number(secondValue)
 }
