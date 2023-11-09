@@ -1,3 +1,3 @@
-module.exports = function multiply(firstInteger, secondInteger) {
-    return firstInteger * secondInteger
+module.exports = function multiply(firstValue, secondValue) {
+    return Number(firstValue) * Number(secondValue)
 }

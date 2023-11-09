@@ -1,3 +1,3 @@
-module.exports = function subtract(firstInteger, secondInteger) {
-    return firstInteger - secondInteger
+module.exports = function subtract(firstValue, secondValue) {
+    return Number(firstValue) - Number(secondValue)
 }
