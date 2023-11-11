@@ -1,6 +1,3 @@
-
-
-
 const getArguments = (args) => {
     const prefix =  '-'
     const result = {}
