@@ -1,6 +1,6 @@
 {
-  "name": "weather-cli",
-  "version": "1.0.0",
+  "name": "weather-cli-for-all",
+  "version": "1.0.1",
   "description": "CLI to check the weather",
   "main": "weather.js",
   "bin": {
@@ -17,7 +17,7 @@
   "author": "LVV",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LipinVV/NodeTutorial/issues"
+    "url": "https://github.com/LipinVV/NodeTutorial/tree/weather-cli"
   },
   "homepage": "https://github.com/LipinVV/NodeTutorial#readme",
   "dependencies": {
