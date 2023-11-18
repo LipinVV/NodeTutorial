@@ -17,21 +17,28 @@ const getIcon = (icon) => {
     return iconsHash[currentIconId]
 }
 
-const getWeather = async (city) => {
+const getWeather = async (location) => {
     const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token)
     if (!token) {
         throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')
     }
-    const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
-        params: {
-            q: city,
-            appid: token,
-            lang: 'ru',
-            units: 'metric'
-        }
+
+    const isMultipleLocations = Array.isArray(location) ? location : [location]
+
+    const promises = isMultipleLocations.map(async (city) => {
+        const { data } = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
+            params: {
+                q: city,
+                appid: token,
+                lang: 'ru',
+                units: 'metric'
+            }
+        })
+
+        return data
     })
 
-    return data
+    return Promise.all(promises)
 }
 
 export { getWeather, getIcon }

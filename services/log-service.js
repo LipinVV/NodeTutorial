@@ -7,19 +7,12 @@ const printError = (error) => {
     console.log(bgRed('Error: ') + ' ' + error)
 }
 
-const printSuccess = (message) => {
-    console.log(bgGreen('Success : ') + ' ' + message)
+const printAlert = (notification) => {
+    console.log(bgCyan('Внимание: ') + ' ' + notification)
 }
 
-const printHelp = () => {
-    console.log(
-        dedent`${bgCyan(' HELP ')}
-		Без параметров - вывод погоды
-		-s [CITY] для установки города
-		-h для вывода помощи
-		-t [API_KEY] для сохранения токена
-		`
-    )
+const printSuccess = (message) => {
+    console.log(bgGreen('Success : ') + ' ' + message)
 }
 
 const printWeather = (res, icon) => {
@@ -33,4 +26,4 @@ const printWeather = (res, icon) => {
     )
 }
 
-export { printError, printSuccess, printHelp, printWeather }
+export { printError, printSuccess, printWeather, printAlert }
