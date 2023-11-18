@@ -4,6 +4,19 @@ import { printSuccess, printError, printWeather, printAlert } from "./services/l
 import { saveKeyValue, getKeyValue, TOKEN_DICTIONARY } from "./services/storage-service.js"
 import { getIcon, getWeather } from "./services/api.service.js"
 
+const saveLanguage = async language => {
+    if(!language.length) {
+        printError('Не выбран язык')
+        return
+    }
+    try {
+        await saveKeyValue(TOKEN_DICTIONARY.language, language)
+        printSuccess('Язык сохранён')
+    } catch (error) {
+        printError(error.message)
+    }
+}
+
 const saveToken = async token => {
     if(!token.length) {
         printError('Не указан token')
@@ -81,8 +94,8 @@ const initCLI = () => {
            return saveLocation(trimAfterComma(args.s))
         },
         t: () => saveToken(args.t),
+        l: () => saveLanguage(args.l),
     }
-
 
     if(args.s && args.m) {
         printAlert(`Вы указали и город и несколько городов. Сохранится только ${args.s}`)
@@ -94,7 +107,7 @@ const initCLI = () => {
         }
     })
 
-    const noCommandRelatedToForecast = !args.m && !args.s && !args.h && (!args.t && args.t !== '')
+    const noCommandRelatedToForecast = !args.m && !args.s && !args.h && (!args.t && args.t !== '') && (!args.l && args.l !== '')
 
     if(noCommandRelatedToForecast) {
         return getForecast()

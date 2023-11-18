@@ -19,6 +19,8 @@ const getIcon = (icon) => {
 
 const getWeather = async (location) => {
     const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token)
+    const language = process.env.LANGUAGE ?? await getKeyValue(TOKEN_DICTIONARY.language)
+
     if (!token) {
         throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')
     }
@@ -30,7 +32,7 @@ const getWeather = async (location) => {
             params: {
                 q: city,
                 appid: token,
-                lang: 'ru',
+                lang: language ? language : 'ru',
                 units: 'metric'
             }
         })

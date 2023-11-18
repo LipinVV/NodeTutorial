@@ -1,4 +1,4 @@
-import { homedir,  } from 'os'
+import { homedir } from 'os'
 import { join } from 'path'
 import { promises } from 'fs'
 
@@ -6,7 +6,8 @@ const filePath = join(homedir(), 'weather-data.json')
 
 const TOKEN_DICTIONARY = {
     token: 'token',
-    location: 'location'
+    location: 'location',
+    language: 'language'
 }
 
 const isExist = async path => {
@@ -29,8 +30,6 @@ const saveKeyValue = async (key, value) => {
     data[key] = value
 
     await promises.writeFile(filePath, JSON.stringify(data))
-
-    // console.log('file updated: ', JSON.parse(await promises.readFile(filePath)))
 }
 
 const getKeyValue = async key => {
