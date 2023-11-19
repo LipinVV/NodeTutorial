@@ -1,10 +1,10 @@
 {
   "name": "weather-cli-for-all",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI to check the weather",
-  "main": "8-weather-extended/weather.js",
+  "main": "weather.js",
   "bin": {
-    "weather": "8-weather-extended/weather.js"
+    "weather": "weather.js"
   },
   "type": "module",
   "scripts": {
