@@ -26,10 +26,9 @@ const getTranslation = (word, language) => {
     if (WEATHER_DICTIONARY.hasOwnProperty(word)) {
         if (language === 'ru') {
             return WEATHER_DICTIONARY[word][0]
-        } else if (language === 'en') {
+        }
+        if (language === 'en') {
             return WEATHER_DICTIONARY[word][1]
-        } else {
-            printError('Язык не поддерживается')
         }
     }
 }

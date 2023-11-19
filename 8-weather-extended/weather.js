@@ -59,12 +59,19 @@ const getForecast = async () => {
     try {
         const location = process.env.LOCATION ?? await getKeyValue(CLI_DICTIONARY.location)
         const language = process.env.LANGUAGE ?? await getKeyValue(CLI_DICTIONARY.language)
+        const correctLanguage = language === 'ru' || language === 'en'
+
         const weather = await getWeather(location)
 
-        weather.map(singleForecast => {
-            printWeather(singleForecast, getIcon(singleForecast.weather[0]?.icon), language)
-        })
+        if(correctLanguage) {
+            weather.map(singleForecast => {
+                printWeather(singleForecast, getIcon(singleForecast.weather[0]?.icon), language)
+            })
+        }
 
+        if(!correctLanguage) {
+            printError('Язык не поддерживается | Language is not supported')
+        }
     } catch (error) {
         if (error?.response?.status === 404) {
             printError('Неверно указан город')
