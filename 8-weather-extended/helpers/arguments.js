@@ -31,7 +31,7 @@ args
         },
         'l': {
             alias: 'language',
-            describe: 'Язык предоставления ответа прогноза',
+            describe: 'Язык для вывода: ru/en',
             type: 'string',
         },
         'm': {

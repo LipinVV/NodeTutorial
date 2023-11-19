@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getKeyValue, TOKEN_DICTIONARY } from "./storage-service.js"
+import { getKeyValue, CLI_DICTIONARY } from "./storage-service.js"
 
 const getIcon = (icon) => {
     const currentIconId = icon.slice(0, -1)
@@ -18,8 +18,8 @@ const getIcon = (icon) => {
 }
 
 const getWeather = async (location) => {
-    const token = process.env.TOKEN ?? await getKeyValue(TOKEN_DICTIONARY.token)
-    const language = process.env.LANGUAGE ?? await getKeyValue(TOKEN_DICTIONARY.language)
+    const token = process.env.TOKEN ?? await getKeyValue(CLI_DICTIONARY.token)
+    const language = process.env.LANGUAGE ?? await getKeyValue(CLI_DICTIONARY.language)
 
     if (!token) {
         throw new Error('Не задан ключ API, задайте его через команду -t [API_KEY]')
